@@ -1,0 +1,70 @@
+h1 {
+    color: cornflowerblue;
+    font-family: Bahnschrift;
+    border-bottom: cornflowerblue 2px solid;
+    text-align: center;
+}
+
+h2 {
+    padding: 20px;
+    font-family: Bahnschrift;
+    font-size: larger;
+}
+
+#filterButtonRow a {
+    padding: 5px;
+    color: white;
+    background-color: indianred;
+    border-radius: 5px;
+    display: inline-flex;
+    font-size: large;
+    text-decoration: none;
+}
+
+#searchBar {
+    padding: 20px;
+    font-family: Bahnschrift;
+    font-size: large;
+}
+
+#searchBar input {
+    font-family: Bahnschrift;
+    font-size: large;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+table {
+    width: 100%;
+}
+
+table th, td {
+    padding: 5px;
+}
+
+thead {
+    background-color: saddlebrown;
+    color: darkred;
+    font-size: large;
+    font-family: Bahnschrift;
+}
+
+tbody td:last-child {
+    text-align: center;
+}
+
+tr:nth-child(odd) {
+    background-color: bisque;
+    font-family: Bahnschrift;
+    font-size: large;
+}
+
+tr:nth-child(even) {
+    background-color: lightyellow;
+    font-family: Bahnschrift;
+    font-size: large;
+}

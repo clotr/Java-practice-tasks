@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic webshop</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+    <div><h1>The Beer Shop. Just click and drink!</h1></div>
+    <div id="filterButtonRow">
+        <a href="/index">LIST ALL</a>
+        <a href="/available">AVAILABLE ONLY</a>
+        <a href="/cheapest">CHEAPEST FIRST</a>
+        <a href="/contains">CONTAINS MOSAIC</a>
+        <a href="/average">AVERAGE STOCK</a>
+        <a href="/expensive">MOST EXPENSIVE AVAILABLE</a>
+    </div>
+    <form id="searchBar" action="" method="post">
+        <label for="search">Search for:</label>
+        <input type="text" id="search" placeholder="...something like IPA" name="search">
+        <input type="submit" value="Search">
+    </form>
+    <h2 th:class="${hideTable ?  '' : 'hidden' }" th:text="'Average stock:  ' + ${average}"></h2>
+    <table th:class="${hideTable ? 'hidden' : '' }">
+        <thead>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity of stock</th>
+        </thead>
+        <tr th:each="product : ${productList}">
+            <td th:text="${product.getName()}"></td>
+            <td th:text="${product.getDescription()}"></td>
+            <td th:text="${product.getPrice()} + '  Ft'"></td>
+            <td th:text="${product.getStock()}"></td>
+        </tr>
+    </table>
+
+
+</body>
+</html>

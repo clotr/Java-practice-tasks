@@ -7,31 +7,58 @@
 </head>
 <body>
     <div><h1>The Beer Shop. Just click and drink!</h1></div>
-    <div id="filterButtonRow">
-        <a href="/index">LIST ALL</a>
-        <a href="/available">AVAILABLE ONLY</a>
-        <a href="/cheapest">CHEAPEST FIRST</a>
-        <a href="/contains">CONTAINS MOSAIC</a>
-        <a href="/average">AVERAGE STOCK</a>
-        <a href="/expensive">MOST EXPENSIVE AVAILABLE</a>
+    <div id="page1Filters" th:class="${firstPage ?  '' : 'hidden' }">
+        <div class="filterButtonRow">
+            <a class="inactiveFilterPager"><<</a>
+            <a href="/index">LIST ALL</a>
+            <a href="/available">AVAILABLE ONLY</a>
+            <a href="/cheapest">CHEAPEST FIRST</a>
+            <a href="/filter-by-type/chili">CONTAINS CHILI</a>
+            <a href="/average">AVERAGE STOCK</a>
+            <a href="/expensive">MOST EXPENSIVE AVAILABLE</a>
+            <a class="activeFilterPager" href="/more">>></a>
+        </div>
+        <form id="searchBar" action="" method="post">
+            <label for="search">Search for:</label>
+            <input type="text" id="search" placeholder="...something like IPA" name="search">
+            <input type="submit" value="Search">
+        </form>
     </div>
-    <form id="searchBar" action="" method="post">
-        <label for="search">Search for:</label>
-        <input type="text" id="search" placeholder="...something like IPA" name="search">
-        <input type="submit" value="Search">
-    </form>
+    <div id="page2Filters" th:class="${firstPage ?  'hidden' : ''}">
+        <div class="filterButtonRow">
+            <a class="activeFilterPager" href="/index"><<</a>
+            <a href="/filter-by-type/blond ale">Blond Ale</a>
+            <a href="/filter-by-type/american pale ale">American Pale Ale</a>
+            <a href="/filter-by-type/india pale ale">India Pale Ale</a>
+            <a href="/filter-by-type/west coast">West Coast IPA</a>
+            <a href="/filter-by-type/new england">New England IPA</a>
+            <a href="/filter-by-type/hefeweizen">Hefeweizen</a>
+            <a href="/price-in-eur">EURO</a>
+            <a href="/more">ORIGINAL CURRENCY</a>
+            <a class="inactiveFilterPager">>></a>
+        </div>
+        <form id="priceFilter" action="/filter?" method="get">
+            <input type="submit" name="limitType" value="Above">
+            <input type="submit" name="limitType" value="Below">
+            <input type="submit" name="limitType" value="Exactly">
+            <label for="priceFilt">Filter by price:</label>
+            <input type="text" id="priceFilt" placeholder="500" name="limit" required>
+        </form>
+    </div>
     <h2 th:class="${hideTable ?  '' : 'hidden' }" th:text="'Average stock:  ' + ${average}"></h2>
     <table th:class="${hideTable ? 'hidden' : '' }">
         <thead>
             <th>Name</th>
+            <th>Type</th>
             <th>Description</th>
             <th>Price</th>
             <th>Quantity of stock</th>
         </thead>
         <tr th:each="product : ${productList}">
             <td th:text="${product.getName()}"></td>
+            <td th:text="${product.getType()}"></td>
             <td th:text="${product.getDescription()}"></td>
-            <td th:text="${product.getPrice()} + '  Ft'"></td>
+            <td th:text="${priceInEUR ? product.getPriceInEuro() + '  €' : product.getPrice() + '  Ft'}"></td>
             <td th:text="${product.getStock()}"></td>
         </tr>
     </table>

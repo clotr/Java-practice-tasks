@@ -11,7 +11,7 @@ h2 {
     font-size: larger;
 }
 
-#filterButtonRow a {
+.filterButtonRow a {
     padding: 5px;
     color: white;
     background-color: indianred;
@@ -19,6 +19,16 @@ h2 {
     display: inline-flex;
     font-size: large;
     text-decoration: none;
+}
+
+.filterButtonRow a:first-child {
+    background-color: black;
+    color: yellow;
+}
+
+.filterButtonRow a:last-child {
+    background-color: black;
+    color: yellow;
 }
 
 #searchBar {
@@ -33,10 +43,21 @@ h2 {
     border-radius: 5px;
 }
 
+#priceFilter {
+    horizontal-align: left;
+    padding: 20px;
+    font-family: Bahnschrift;
+}
+
+#priceFilter input {
+    font-family: Bahnschrift;
+    font-size: larger;
+    border-radius: 5px;
+}
+
 .hidden {
     display: none;
 }
-
 
 table {
     width: 100%;
